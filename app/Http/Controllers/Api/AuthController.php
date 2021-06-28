@@ -5,21 +5,23 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
+    //Login function
     public function login(Request $request){
-
         $credentials = $request->only(['email',
         'password']);
-
 
         if(!$token=auth()->attempt($credentials)){
 
             return response()->json([
                 'werktNiet' => false,
+                'message' => 'invalid credentials'
             ]);
         }
         return response()->json([
@@ -29,6 +31,7 @@ class AuthController extends Controller
         ]);
     }
 
+    //Register function
     public function register(Request $request){
 
         $encryptedPass = Hash::make($request->password);
@@ -47,7 +50,24 @@ class AuthController extends Controller
         catch(Exception $e){
             return response()->json([
                 'werktNiet' => false,
-                'message' => $e
+                'message' => ''.$e
+            ]);
+        }
+    }
+
+    //Logout function
+    public function logout(Request $request){
+        try{
+            JWTAuth::invalidate(JWTAuth::parseToken($request->token));
+            return response()->json([
+                'werktWel' => true,
+                'message' => 'Je bent uitgelogd'
+            ]);
+        }
+        catch(Exception $e){
+            return response()->json([
+                'werktNiet' => false,
+                'message' => ''.$e
             ]);
         }
     }
