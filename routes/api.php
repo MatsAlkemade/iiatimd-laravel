@@ -19,9 +19,7 @@ Route::post('/login','Api\AuthController@login');
 Route::post('/register','Api\AuthController@register');
 Route::get('/logout','Api\AuthController@logout');
 
-//post 
+//cocktail 
 Route::post('/cocktails/create', 'Api\CocktailsController@create');
 Route::post('/cocktails/delete', 'Api\CocktailsController@delete');
 Route::post('/cocktails/update', 'Api\CocktailsController@update');
-Route::post('/cocktails', 'Api\CocktailsController@show');
-// Route::get('/cocktails', [App\Http\Controllers\Api\CocktailsController::class, 'show']);

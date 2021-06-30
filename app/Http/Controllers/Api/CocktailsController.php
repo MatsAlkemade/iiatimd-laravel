@@ -14,22 +14,19 @@ class CocktailsController extends Controller
         $cocktail = new Cocktail;
         $cocktail->title = $request->title;
         $cocktail->desc = $request->desc;
+        $cocktail->calories = $request->calories;
+        $cocktail->percentage = $request->percentage;
 
-        if($request->photo != ''){
+        if($request->photo != null){
             $photo = time().'jpg';
             file_put_contents('storage/cocktails/'.$photo,base64_decode($request->photo));
             $cocktail->photo = $photo; 
         }
 
         $cocktail->save();
-        $cocktail->user;
         return response()->json([
             'werktWel'=> true,
             'message' => 'Toegevoegd!',
             'cocktail' => $cocktail]);
-    }
-
-    public function show(){
-        return "Hello world";
     }
 }
