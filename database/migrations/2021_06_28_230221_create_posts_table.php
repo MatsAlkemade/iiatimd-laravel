@@ -14,14 +14,14 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->id();
+            // $table->unsignedBigInteger('user_id');
             $table->string('desc');
-            $table->string('photo')->default('');
+            // $table->string('photo')->default('');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')
-            ->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')
+            // ->on('users')->onDelete('cascade');
         });
     }
 

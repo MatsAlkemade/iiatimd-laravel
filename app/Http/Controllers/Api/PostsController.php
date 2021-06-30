@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
+
 class PostsController extends Controller
 {
     public function create(Request $request){
 
         $post = new Post;
-        $post->user_id = Auth::user()->id;
+        $post -> id = Auth::user()->id;
         $post->desc = $request->desc;
 
         if($request->photo != ''){
