@@ -27,6 +27,7 @@ class CocktailsController extends Controller
         return response()->json([
             'werktWel'=> true,
             'message' => 'Toegevoegd!',
-            'cocktail' => $cocktail]);
+            'cocktail' => $cocktail,
+        ]);
     }
 }
