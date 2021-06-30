@@ -25,3 +25,5 @@ Route::middleware(['jwtAuth'])->group(function(){
     Route::post('/cocktails/delete', 'Api\CocktailsController@delete');
     Route::post('/cocktails/update', 'Api\CocktailsController@update');
 });
+
+Route::get('/cocktails', 'Api\CocktailsController@cocktails');

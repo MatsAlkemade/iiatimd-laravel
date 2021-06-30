@@ -30,4 +30,50 @@ class CocktailsController extends Controller
             'cocktail' => $cocktail,
         ]);
     }
+
+    public function update(Request $request){
+        $cocktail = Cocktail::find($request->id);
+        
+    
+        $cocktail->desc = $request->desc;
+        $cocktail->title = $request->title;
+        $cocktail->calories = $request->calories;
+        $cocktail->percentage = $request->percentage;
+        $cocktail->update();
+        return response()->json([
+            'werktWel' => true,
+            'message'=> 'Geplaatst!'
+        ]);
+    }
+
+    public function delete(Request $request){
+        $cocktail = Cocktail::find($request->id);
+        
+    
+        $cocktail->desc = $request->desc;
+        $cocktail->title = $request->title;
+        $cocktail->calories = $request->calories;
+        $cocktail->percentage = $request->percentage;
+
+        if($cocktail->photo != ''){
+            Storage::delete('public/cocktails/' .$cocktail->photo);
+        }
+        $cocktail->delete();
+        return response()->json([
+            'werktWel' => true,
+            'message'=> 'Geplaatst!'
+        ]);
+    }
+
+    // what is in the db
+    public function cocktails(){
+        $cocktails = Cocktail::orderBy('id','desc','title','calories','percentage')->get();
+        return response()->json([
+            'werkWel' => true,
+            'cocktails' => $cocktails
+        ]);
+    }
 }
+
+
+   
