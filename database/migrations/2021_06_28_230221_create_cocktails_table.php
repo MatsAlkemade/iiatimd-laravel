@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateCocktailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('cocktails', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
-            $table->string('desc');
-            // $table->string('photo')->default('');
+            $table->string('title');
+            $table->longText('desc');
+            $table->longText('photo')->nullable();
+            $table->integer('calories');
+            $table->decimal('percentage');
             $table->timestamps();
-
-            // $table->foreign('user_id')->references('id')
-            // ->on('users')->onDelete('cascade');
         });
     }
 
@@ -32,6 +31,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('cocktails');
     }
 }
