@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use DB;
 
-class IngredientInCocktailTableSeeder extends Seeder
+class CocktailIngredientTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class IngredientInCocktailTableSeeder extends Seeder
         $mojito_ingredient_ids = [1, 2, 3, 4, 5, 6];
 
         foreach($mojito_ingredient_ids as $mojito_ingredient_id){
-            DB::table('ingredient_in_cocktail')->insert([
+            DB::table('cocktail_ingredient')->insert([
                 'cocktail_id' => 1,
                 'ingredient_id' => $mojito_ingredient_id,
             ]);
@@ -26,7 +26,7 @@ class IngredientInCocktailTableSeeder extends Seeder
         $pina_colada_ingredient_ids = [1, 7, 8, 9];
 
         foreach($pina_colada_ingredient_ids as $pina_colada_ingredient_id){
-            DB::table('ingredient_in_cocktail')->insert([
+            DB::table('cocktail_ingredient')->insert([
                 'cocktail_id' => 2,
                 'ingredient_id' => $pina_colada_ingredient_id,
             ]);

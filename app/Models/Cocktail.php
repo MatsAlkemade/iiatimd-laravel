@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-
 
 class Cocktail extends Model
 {
-   public function user(){
-       return $this->belongsTo(User::class);
-   }
+    protected $table = "cocktails";
+
+    public function ingredients(){
+        return $this->belongsToMany(Ingredient::class);
+    }
 }
