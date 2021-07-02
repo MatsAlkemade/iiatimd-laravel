@@ -25,7 +25,7 @@ class CocktailsController extends Controller
 
         $cocktail->save();
         return response()->json([
-            'werktWel'=> true,
+            'success'=> true,
             'message' => 'Toegevoegd!',
             'cocktail' => $cocktail,
         ]);
@@ -41,7 +41,7 @@ class CocktailsController extends Controller
         $cocktail->percentage = $request->percentage;
         $cocktail->update();
         return response()->json([
-            'werktWel' => true,
+            'success' => true,
             'message'=> 'Geplaatst!'
         ]);
     }
@@ -60,7 +60,7 @@ class CocktailsController extends Controller
         }
         $cocktail->delete();
         return response()->json([
-            'werktWel' => true,
+            'success' => true,
             'message'=> 'Geplaatst!'
         ]);
     }

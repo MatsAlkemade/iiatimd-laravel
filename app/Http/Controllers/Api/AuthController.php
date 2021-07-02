@@ -20,12 +20,12 @@ class AuthController extends Controller
         if(!$token=auth()->attempt($credentials)){
 
             return response()->json([
-                'werktNiet' => false,
+                'success' => false,
                 'message' => 'invalid credentials'
             ]);
         }
         return response()->json([
-            'werktWel' => true,
+            'success' => true,
             'token' => $token,
             'user' => Auth::user() 
         ]);
@@ -49,7 +49,7 @@ class AuthController extends Controller
         }
         catch(Exception $e){
             return response()->json([
-                'werktNiet' => false,
+                'success' => false,
                 'message' => ''.$e
             ]);
         }
@@ -60,13 +60,13 @@ class AuthController extends Controller
         try{
             JWTAuth::invalidate(JWTAuth::parseToken($request->token));
             return response()->json([
-                'werktWel' => true,
+                'success' => true,
                 'message' => 'Je bent uitgelogd'
             ]);
         }
         catch(Exception $e){
             return response()->json([
-                'werktNiet' => false,
+                'success' => false,
                 'message' => ''.$e
             ]);
         }
