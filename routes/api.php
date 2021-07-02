@@ -37,3 +37,4 @@ Route::middleware(['jwtAuth'])->group(function(){
 Route::get('/cocktails', 'Api\CocktailsController@cocktails');
 Route::get('/ingredients', 'Api\IngredientsController@ingredients');
 
+Route::get('/users', 'Api\AuthController@users');
