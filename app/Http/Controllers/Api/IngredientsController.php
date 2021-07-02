@@ -16,7 +16,7 @@ class IngredientsController extends Controller
 
         $ingredient->save();
         return response()->json([
-            'werktWel'=> true,
+            'success'=> true,
             'message' => 'Toegevoegd!',
             'ingredient' => $ingredient,
         ]);
