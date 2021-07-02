@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/cocktails', function () {
+    $cocktails = \App\Models\Cocktail::all();
+
+    return $cocktails;
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
