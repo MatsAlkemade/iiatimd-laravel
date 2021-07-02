@@ -30,4 +30,12 @@ class IngredientsController extends Controller
             'message' => 'ingredient deleted'
         ]);
     }
+
+    // what is in the db
+    public function ingredients(){
+        $ingredients = Ingredient::orderBy('name', 'asc')->get();
+        return response()->json([
+            'ingredients' => $ingredients
+        ]);
+    }
 }

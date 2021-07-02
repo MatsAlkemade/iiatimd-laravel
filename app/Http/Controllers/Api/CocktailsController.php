@@ -67,7 +67,7 @@ class CocktailsController extends Controller
 
     // what is in the db
     public function cocktails(){
-        $cocktails = Cocktail::orderBy('id','desc','title','calories','percentage')->get();
+        $cocktails = Cocktail::orderBy('title', 'asc')->get();
         return response()->json([
             'cocktails' => $cocktails
         ]);
