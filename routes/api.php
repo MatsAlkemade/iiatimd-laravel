@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/', function () {
+    return response()->json([
+        'Database' => "Works!"
+    ]);
+});
+
 //user
 Route::post('/login','Api\AuthController@login');
 Route::post('/register','Api\AuthController@register');
