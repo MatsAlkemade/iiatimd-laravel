@@ -27,8 +27,15 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'test',
+            'name' => 'Test',
             'email' => 'test@gmail.com',
+            'password' => bcrypt('laravel'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'role' => 'admin',
             'password' => bcrypt('laravel'),
         ]);
     }
