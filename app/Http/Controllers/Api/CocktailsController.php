@@ -16,12 +16,7 @@ class CocktailsController extends Controller
         $cocktail->desc = $request->desc;
         $cocktail->calories = $request->calories;
         $cocktail->percentage = $request->percentage;
-
-        if($request->photo != null){
-            $photo = time().'jpg';
-            file_put_contents('storage/cocktails/'.$photo,base64_decode($request->photo));
-            $cocktail->photo = $photo; 
-        }
+        $cocktail->photo = $request->photo;
 
         $cocktail->save();
         return response()->json([
