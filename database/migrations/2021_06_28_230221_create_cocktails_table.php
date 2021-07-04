@@ -18,8 +18,8 @@ class CreateCocktailsTable extends Migration
             $table->string('title');
             $table->longText('desc')->nullable();
             $table->longText('photo')->nullable();
-            $table->integer('calories')->nullable();
-            $table->decimal('percentage')->nullable();
+            $table->string('calories')->nullable();
+            $table->string('percentage')->nullable();
             $table->timestamps();
         });
     }
