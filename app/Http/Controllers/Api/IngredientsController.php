@@ -26,7 +26,7 @@ class IngredientsController extends Controller
         $ingredient = Ingredient::find($request->id);
         $ingredient->delete();
         return response()->json([
-            'succes' => true,
+            'success' => true,
             'message' => 'ingredient deleted'
         ]);
     }
