@@ -16,10 +16,10 @@ class CreateCocktailsTable extends Migration
         Schema::create('cocktails', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('desc');
+            $table->longText('desc')->nullable();
             $table->longText('photo')->nullable();
-            $table->integer('calories');
-            $table->decimal('percentage');
+            $table->integer('calories')->nullable();
+            $table->decimal('percentage')->nullable();
             $table->timestamps();
         });
     }
