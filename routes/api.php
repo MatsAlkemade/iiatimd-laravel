@@ -27,11 +27,11 @@ Route::get('/logout','Api\AuthController@logout');
 
 //cocktail 
 Route::middleware(['jwtAuth'])->group(function(){
-    Route::post('/cocktails/create', 'Api\CocktailsController@create');
-    Route::post('/cocktails/delete', 'Api\CocktailsController@delete');
+    Route::post('/cocktails/create', 'Api\CocktailsController@store');
+    Route::post('/cocktails/delete', 'Api\CocktailsController@destroy');
     Route::post('/cocktails/update', 'Api\CocktailsController@update');
-    Route::post('/ingredients/create', 'Api\IngredientsController@create');
-    Route::post('/ingredients/delete', 'Api\IngredientsController@delete');
+    Route::post('/ingredients/create', 'Api\IngredientsController@store');
+    Route::post('/ingredients/delete', 'Api\IngredientsController@destroy');
 });
 
 Route::get('/cocktails', 'Api\CocktailsController@cocktails');
