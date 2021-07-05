@@ -25,7 +25,7 @@ class CocktailsController extends Controller
             // // decode photo string and save to storage/profiles
             // file_put_contents('storage/images/'.$photo,base64_decode($request->photo));
 
-            $photo = 'data:image/jpeg;base64,' + $request->photo;
+            $photo = 'data:image/jpeg;base64,' . $request->photo;
             $cocktail->photo = $photo;
         }
         $cocktail->save();
