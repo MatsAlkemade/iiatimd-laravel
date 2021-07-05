@@ -24,11 +24,18 @@ class IngredientsController extends Controller
 
     public function destroy(Request $request){
         $ingredient = Ingredient::find($request->id);
-        $ingredient->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'ingredient deleted'
-        ]);
+        try {
+            $ingredient->delete();
+            return response()->json([
+                'success' => true,
+                'message'=> 'Deleted!'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => ''.$e
+            ]);
+        }
     }
 
     // what is in the db
