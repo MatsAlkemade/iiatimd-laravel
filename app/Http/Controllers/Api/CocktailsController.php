@@ -13,27 +13,18 @@ class CocktailsController extends Controller
         $cocktail = new Cocktail;
 
         try {
-        $cocktail->title = $request->title;
-        $cocktail->desc = $request->desc;
-        $cocktail->calories = $request->calories;
-        $cocktail->percentage = $request->percentage;
-        $photo = '';
-        //check if user provided photo
-        if($request->photo!=''){
-            // // user time for photo name to prevent name duplication
-            // $photo = time().'.jpg';
-            // // decode photo string and save to storage/profiles
-            // file_put_contents('storage/images/'.$photo,base64_decode($request->photo));
-
-            $photo = 'data:image/jpeg;base64,' . $request->photo;
-            $cocktail->photo = $photo;
-        }
-        $cocktail->save();
-        return response()->json([
-            'success'=> true,
-            'message' => 'Toegevoegd!',
-            'cocktail' => $cocktail,
-        ]);
+            $cocktail->title = $request->title;
+            $cocktail->desc = $request->desc;
+            $cocktail->calories = $request->calories;
+            $cocktail->percentage = $request->percentage;
+            $cocktail->photo = $request->photo;
+            
+            $cocktail->save();
+            return response()->json([
+                'success'=> true,
+                'message' => 'Toegevoegd!',
+                'cocktail' => $cocktail,
+            ]);
         }
         catch(Exception $e){
             return response()->json([
